@@ -1,6 +1,5 @@
 import React from "react";
 import {headerHeight} from "../Layout";
-import SomethingWentWrong from "../../images/something went wrong.gif";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby"
 import Button from "@material-ui/core/Button";

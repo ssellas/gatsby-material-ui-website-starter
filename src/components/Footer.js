@@ -1,19 +1,12 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import Logo from '../images/bond-logo-white.svg'
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import {Facebook, Instagram, LinkedIn, Twitter} from "@material-ui/icons";
-import GatsbyLink from "./utility/GatsbyLink";
-import {useTheme} from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Hidden from "@material-ui/core/Hidden";
-import clsx from "clsx";
-import ConnectForm from "./forms/ConnectForm";
+import Box from "@material-ui/core/Box";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.primary.main,
+    minHeight: theme.spacing(16),
+    backgroundColor: theme.palette.secondary.main,
     color: theme.palette.primary.contrastText,
   },
 }));
@@ -24,8 +17,13 @@ export default function Footer(props) {
   const classes = useStyles();
 
   return (
-      <footer className={classes.root} {...rest}>
-
+      <footer {...rest}>
+        <Box p={3} display='flex' justifyContent="flex-end" alignItems="flex-end" className={classes.root}>
+          <Link href='https://github.com/ssellas/gatsby-material-ui-website-starter' variant="body1" color='inherit'
+                target="_blank" rel="noopener">
+            Gatsby Material UI Website Starter
+          </Link>
+        </Box>
       </footer>
   );
 }

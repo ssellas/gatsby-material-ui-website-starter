@@ -3,6 +3,8 @@ import {Formik} from "formik";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const encode = (data) => {
   return Object.keys(data)
@@ -11,15 +13,9 @@ const encode = (data) => {
 };
 
 const useStyles = makeStyles(theme => ({
-  textField: {
-    marginTop: theme.spacing(4),
+  marginBottom: {
+    marginBottom: theme.spacing(2),
   },
-  input: {
-    fontFamily: theme.typography.body1.fontFamily
-  },
-  submitButton: {
-    marginTop: theme.spacing(6),
-  }
 }));
 
 export default function ContactForm({handleClose, ...rest}) {
@@ -63,54 +59,51 @@ export default function ContactForm({handleClose, ...rest}) {
                 <TextField
                     onChange={handleChange}
                     value={values.name}
-                    className={classes.textField}
-                    InputProps={{className: classes.input}}
+                    className={classes.marginBottom}
+                    color='secondary'
                     autoComplete="name"
                     name="name"
                     variant="outlined"
                     required
                     fullWidth
                     id="name"
-                    placeholder="Full Name"
-                />
+                    label="Name"/>
                 <TextField
                     onChange={handleChange}
                     value={values.email}
-                    className={classes.textField}
-                    InputProps={{className: classes.input}}
+                    className={classes.marginBottom}
+                    color='secondary'
                     variant="outlined"
                     required
                     fullWidth
                     id="email"
-                    placeholder="Email"
+                    label="Email"
                     name="email"
                     type="email"
-                    autoComplete="email"
-                />
+                    autoComplete="email"/>
                 <TextField
                     onChange={handleChange}
                     value={values.message}
-                    className={classes.textField}
-                    InputProps={{className: classes.input}}
+                    className={classes.marginBottom}
+                    color='secondary'
                     variant="outlined"
                     required
                     fullWidth
                     name="message"
-                    placeholder="Message"
+                    label="Message"
                     id="message"
                     multiline
-                    rows='8'
-                />
-                <Button
-                    className={classes.submitButton}
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    disabled={isSubmitting}
-                >
-                  Send Message
-                </Button>
+                    rows='8'/>
+                <Box display='flex' justifyContent='flex-end'>
+                  <Button
+                      type="submit"
+                      variant="contained"
+                      color="secondary"
+                      disabled={isSubmitting}
+                      startIcon={isSubmitting ? <CircularProgress size={24} color='inherit'/> : null}>
+                    Send Message
+                  </Button>
+                </Box>
               </form>
           )
         }}
