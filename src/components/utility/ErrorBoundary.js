@@ -1,32 +1,8 @@
 import React from "react";
-import {headerHeight} from "../Layout";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "gatsby"
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import withStyles from "@material-ui/core/styles/withStyles";
-
-const styles = theme => ({
-  root: {
-    minHeight: `calc(100vh - ${headerHeight}px)`,
-    padding: theme.spacing(2),
-    color: theme.palette.dark,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    textAlign: 'center'
-  },
-  image: {
-    width: '100%',
-    maxHeight: 416,
-    objectFit: 'contain',
-    marginBottom: theme.spacing(4)
-  },
-  typography: {
-    marginBottom: theme.spacing(4)
-  }
-});
+import MuiLink from "./MuiLink";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -45,18 +21,17 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      const { classes } = this.props;
       // You can render any custom fallback UI
       return (
-          <Box className={classes.root}>
+          <Box p={6}>
             <Typography variant='h3'>
               Oops! Something went wrong.
             </Typography>
-            <Link to={'/'}>
+            <MuiLink underline='none' to={'/'}>
               <Button variant='contained' color='primary'>
                 Return to Home
               </Button>
-            </Link>
+            </MuiLink>
           </Box>
       )
     }
@@ -65,4 +40,4 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-export default withStyles(styles)(ErrorBoundary);
+export default ErrorBoundary;
